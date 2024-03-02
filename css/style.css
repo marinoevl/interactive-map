@@ -1,0 +1,34 @@
+/* basic positioning */
+.legend {
+  list-style: none;
+}
+.legend li {
+  margin-right: 10px;
+}
+.legend span {
+  border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px;
+}
+/* your colors */
+.legend .fivePercent { background-color: #04490c; }
+.legend .fourPercent { background-color: #0a7400; }
+.legend .threePercent { background-color: #15a708; }
+.legend .twoPercent { background-color: #04c707; }
+.legend .onePercent { background-color: #00fb1d; }
+.legend .zeroPercent { background-color: #caffde; }
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+  position: sticky;
+  top: 40px;
+  background: white;
+}
+
+.sticky {
+  position: sticky;
+  top: 0px;
+  background: white;
+}
