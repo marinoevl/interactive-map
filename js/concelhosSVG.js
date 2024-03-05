@@ -2,6 +2,8 @@ var MAP_WIDTH = 2950;
 var MAP_HEIGHT = 1500;
 // The RaphaelJS container
 var mapContainer = document.getElementById("map");
+debugger
+console.log(Raphael ? true : false)
 var map = new Raphael(mapContainer, MAP_WIDTH, MAP_HEIGHT);
 
 // The SVG council map

@@ -56,15 +56,17 @@ function corConcelho(nome) {
     return council.municipio == nome;
   });
   console.log(selectedCouncil);
-  
-  return style;
-  
+
+  return {
+    fill: selectedCouncil.getByIndex(2),
+  }
 }
 
 // Main loop
 // Initializes the map with default styles
 // Adds event listeners for mouseover and mouseout to allow us to see which council we are selecting
-for (var concelhoName in concelhosSVG) {  
+for (var concelhoName in concelhosSVG) {
+    
   (function (concelho, nome) {    
     concelho.attr(style);
     concelho.attr(corConcelho(nome));
@@ -102,7 +104,7 @@ for (var concelhoName in concelhosSVG) {
   })(concelhosSVG[concelhoName], concelhoName);
 }
 
-/*
+
 function fillInformation(council) {
   var keys = Object.keys(council);
   document.getElementById("councilName").innerHTML = council["municipio"];
@@ -111,45 +113,55 @@ function fillInformation(council) {
   var tableToFill = document.getElementById("results");
   tableToFill.innerHTML = "";
   var tblHeader = document.createElement("thead");
-  var header2011 = document.createElement("th");
-  header2011.innerHTML = "2011";
-  header2011.scope = "col";
-  var header2021 = document.createElement("th");
-  header2021.innerHTML = "2021";
-  header2021.scope = "col";
+  var headerId = document.createElement("th");
+  headerId.innerHTML = "Id";
+  headerId.scope = "col";
+  var headerName = document.createElement("th");
+  headerName.innerHTML = "Municipio";
+  headerName.scope = "col";
+  var headerColor = document.createElement("th");
+  headerColor.innerHTML = "Color";
+  headerColor.scope = "col";
 
-  tblHeader.appendChild(header2011);
-  tblHeader.appendChild(header2021);
+  tblHeader.appendChild(headerId);
+  tblHeader.appendChild(headerName);
+  tblHeader.appendChild(headerColor);
   tableToFill.appendChild(tblHeader);
 
-  // Fill in rows, 2 elements at a time because they are a "pair"
+  // Fill in rows, 3 elements at a time because they are a "pair"
   // of related values, for 2011 and 2021
   var tblBody = document.createElement("tbody");
-  var x = 2;
+  var x = 0;
   while (x < keys.length) {
     // Properties
     var headerRow = document.createElement("tr");
-    var headerText2011 = document.createElement("td");
-    headerText2011.innerHTML = keys[x];
-    var headerText2021 = document.createElement("td");
-    headerText2021.innerHTML = keys[x + 1];
-    headerRow.appendChild(headerText2011);
-    headerRow.appendChild(headerText2021);
+    var headerTextId = document.createElement("td");
+    headerTextId.innerHTML = keys[x];
+    var headerTextName = document.createElement("td");
+    headerTextName.innerHTML = keys[x + 1];
+    var headerTextColor = document.createElement("td");
+    headerTextColor.innerHTML = keys[x + 2];
+    headerRow.appendChild(headerTextId);
+    headerRow.appendChild(headerTextName);
+    headerRow.appendChild(headerTextColor);
 
     // Values
     var valuesRow = document.createElement("tr");
-    var valuesText2011 = document.createElement("td");
-    valuesText2011.innerHTML = council.getByIndex(x);
-    var valuesText2021 = document.createElement("td");
-    valuesText2021.innerHTML = council.getByIndex(x + 1);
-    valuesRow.appendChild(valuesText2011);
-    valuesRow.appendChild(valuesText2021);
+    var valuesTextId = document.createElement("td");
+    valuesTextId.innerHTML = council.getByIndex(x+1);
+    var valuesTextName = document.createElement("td");
+    valuesTextName.innerHTML = council.getByIndex(x);
+    var valuesTextColor = document.createElement("td");
+    valuesTextColor.innerHTML = council.getByIndex(x + 2);
+    valuesRow.appendChild(valuesTextId);
+    valuesRow.appendChild(valuesTextName);
+    valuesRow.appendChild(valuesTextColor);
 
     tblBody.appendChild(headerRow);
     tblBody.appendChild(valuesRow);
 
     tableToFill.appendChild(tblBody);
 
-    x = x + 2;
+    x = x + 3;
   }
-}*/
+}
